@@ -1,0 +1,13 @@
+show=drun
+prompt=Search...
+lines=7
+columns=1
+width=800
+height=600
+padding=20
+hide_scroll=true
+no_actions=true
+allow_images=true
+term=ghostty
+insensitive=true
+

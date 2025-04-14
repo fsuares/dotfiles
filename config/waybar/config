@@ -1,0 +1,94 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 20,
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "custom/clipboard",
+    "pulseaudio",
+    "backlight",
+    "network",
+    "battery",
+    "custom/reboot",
+    "custom/poweroff"
+  ],
+  "hyprland/workspaces": {
+    "format": "{name}",
+    "on-click": "activate",
+    "persistent-workspaces": {
+      "*": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  "clock": {
+    "format": "{:%B %d, %H:%M}",
+    "tooltip-format": "{:%A, %d de %B de %Y}",
+    "interval": 60
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon}  {percent}%",
+    "format-icons": [
+      "󰃞",
+      "󰃟",
+      "󰃠",
+      "󰃝"
+    ]
+  },
+  "pulseaudio": {
+    "format": "  {volume}%",
+    "format-muted": "  mute",
+    "on-click": "pamixer -t"
+  },
+  "network": {
+    "format-wifi": "  {essid}",
+    "format-ethernet": "  Connected",
+    "format-disconnected": "  Disconnected",
+    "tooltip-format": "{ipaddr} {signalStrength}%",
+    "on-click": "~/.config/waybar/scripts/wifi-menu.sh",
+    "interval": 5
+  },
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-icons": [
+      " ",
+      " ",
+      " ",
+      " ",
+      " "
+    ],
+    "format-charging": "⚡ {capacity}%"
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10
+  },
+  "custom/clipboard": {
+    "format": "",
+    "tooltip": "Clipboard",
+    "on-click": "exec cliphist list | wofi --dmenu | cliphist decode | wl-copy",
+    "signal": 0
+  },
+  "custom/reboot": {
+    "format": " ",
+    "tooltip": "Reboot",
+    "on-click": "systemctl reboot",
+    "on-click-right": "reboot",
+    "signal": 0
+  },
+  "custom/poweroff": {
+    "format": "⏻",
+    "tooltip": "Shutdown",
+    "on-click": "systemctl poweroff",
+    "on-click-right": "shutdown now",
+    "signal": 0
+  }
+}
