@@ -46,6 +46,11 @@
     NoDisplay=true
   '';
 
+  xdg.configFile."Kvantum/kvantum.kvconfig".text = ''
+    [General]
+    theme=KvGnomeDark
+  ''
+
   # ===========================================
   # 🧩 Custom .desktop entries for Wofi/Rofi
   # ===========================================
@@ -179,4 +184,3 @@
   # ============================
   home.stateVersion = "24.11";
 }
-
