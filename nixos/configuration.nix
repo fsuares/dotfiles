@@ -76,7 +76,7 @@
   users.users.ducck = {
     isNormalUser = true;
     description = "Fernando Suares";
-    extraGroups = [ "networkmanager" "wheel" "video" "audio" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "audio" "docker" "libvirtd" "kvm" ];
     shell = pkgs.zsh;
     packages = with pkgs; [ ];
   };
@@ -180,6 +180,9 @@
     eza  # Modern replacement for 'ls'
     yt-dlp  # YouTube and video downloader
     desktop-file-utils  # Utilities to manage .desktop entries
+    bluez
+    bluez-tools
+    blueman
 
     # GUI apps
     dolphin  # KDE file manager
@@ -207,6 +210,9 @@
     jdk23  # Java Development Kit (version 23)
   ];
 
+  services.udisks2.enable = true;
+  services.dbus.enable = true;
+
   # ============================
   # 🧪 Optional Features
   # ============================
@@ -215,5 +221,11 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  # ============================
+  # Bluetooth Configuration
+  # ============================
+  hardware.bluetooth.enable = true;
+
 }
 

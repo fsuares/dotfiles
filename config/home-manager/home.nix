@@ -46,11 +46,6 @@
     NoDisplay=true
   '';
 
-  xdg.configFile."Kvantum/kvantum.kvconfig".text = ''
-    [General]
-    theme=KvGnomeDark
-  ''
-
   # ===========================================
   # 🧩 Custom .desktop entries for Wofi/Rofi
   # ===========================================
@@ -179,8 +174,18 @@
     konsole = "ghostty";
   };
 
+  xdg.desktopEntries.virt-manager = {
+  name = "Virt-Manager";
+  exec = "virt-manager";
+  terminal = false;
+  icon = "virt-manager";
+  type = "Application";
+};
+
+
   # ============================
   # 📦 Home Manager version pin
   # ============================
   home.stateVersion = "24.11";
 }
+
