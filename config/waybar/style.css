@@ -1,3 +1,6 @@
+/* ================================
+   General Styles
+================================== */
 * {
   border-radius: 0;
   font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font", sans-serif, monospace;
@@ -9,6 +12,16 @@ window {
   color: #c0c0c0;
 }
 
+tooltip {
+  background: #1a1a1a;
+  color: #c0c0c0;
+  border-radius: 6px;
+  padding: 5px;
+}
+
+/* ================================
+   Workspaces
+================================== */
 #workspaces {
   background: #1a1a1a;
   margin: 3px 3px 5px 5px;
@@ -23,31 +36,29 @@ window {
   transition: all 0.2s ease-in-out;
 }
 
-#workspaces button.active {
-  padding: 1px 7px;
-  color: #ff7a84;
-  background: transparent;
-  border-radius: 6px;
-  transition: all 0.2s ease-in-out;
-}
-
+#workspaces button.active,
 #workspaces button:hover {
-  padding: 0 10px;
   color: #ff7a84;
-  background: transparent;
-  border-radius: 6px;
-  transition: all 0.2s ease-in-out;
+  padding: 0 10px;
 }
 
+/* ================================
+   Modules (Shared)
+================================== */
 #clock,
 #battery,
 #pulseaudio,
 #network,
 #tray,
 #backlight,
+#bluetooth,
 #custom-reboot,
 #custom-poweroff,
-#custom-clipboard {
+#custom-clipboard,
+#mpris,
+#cpu,
+#memory,
+#custom-nix {
   background: #1a1a1a; /* palette[0] */
   color: #c0c0c0;
   padding: 4px 10px;
@@ -56,6 +67,9 @@ window {
   transition: background 0.2s ease-in-out;
 }
 
+/* ================================
+   Modules (States & Specifics)
+================================== */
 #clock {
   color: #ff7a84; /* palette[3] */
 }
@@ -72,13 +86,23 @@ window {
   color: #ff7a84;
 }
 
-tooltip {
-  background: #1a1a1a;
-  color: #c0c0c0;
-  border-radius: 6px;
-  padding: 5px;
+#battery:hover,
+#pulseaudio:hover,
+#network:hover,
+#tray:hover,
+#backlight:hover,
+#bluetooth:hover,
+#custom-clipboard:hover,
+#custom-reboot:hover,
+#custom-poweroff:hover,
+#mpris:hover,
+#mpris.playing {
+  color: #ff7a84;
 }
 
+/* ================================
+   Custom Padding Adjustments
+================================== */
 #custom-clipboard {
   padding-top: 4px;
   padding-right: 14px;
@@ -94,13 +118,11 @@ tooltip {
   padding-right: 12px;
 }
 
-#battery:hover,
-#pulseaudio:hover,
-#network:hover,
-#tray:hover,
-#backlight:hover,
-#custom-clipboard:hover,
-#custom-reboot:hover,
-#custom-poweroff:hover {
-  color: #ff7a84;
+#custom-nix {
+  padding-left: 7px;
+  padding-right: 15px;
+}
+
+#bluetooth {
+  font-size: 14px;
 }

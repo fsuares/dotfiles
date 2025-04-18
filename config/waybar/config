@@ -1,9 +1,16 @@
 {
+  // ========================
+  // Bar Configuration
+  // ========================
   "layer": "top",
   "position": "top",
   "height": 20,
+
   "modules-left": [
-    "hyprland/workspaces"
+    "custom/nix",
+    "hyprland/workspaces",
+    "mpris",
+    "mpd"
   ],
   "modules-center": [
     "clock"
@@ -12,42 +19,53 @@
     "custom/clipboard",
     "pulseaudio",
     "backlight",
+    "bluetooth",
     "network",
+    "memory",
     "battery",
     "custom/reboot",
     "custom/poweroff"
   ],
+
+  // ========================
+  // Modules Configurations
+  // ========================
+
   "hyprland/workspaces": {
     "format": "{name}",
     "on-click": "activate",
     "persistent-workspaces": {
-      "*": [
-        1,
-        2,
-        3
-      ]
+      "*": [1, 2, 3, 4, 5]
     }
   },
+
   "clock": {
     "format": "{:%B %d, %H:%M}",
     "tooltip-format": "{:%A, %d de %B de %Y}",
     "interval": 60
   },
-  "backlight": {
-    "device": "intel_backlight",
-    "format": "{icon}  {percent}%",
-    "format-icons": [
-      "󰃞",
-      "󰃟",
-      "󰃠",
-      "󰃝"
-    ]
-  },
+
   "pulseaudio": {
     "format": "  {volume}%",
     "format-muted": "  mute",
     "on-click": "pamixer -t"
   },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon}  {percent}%",
+    "format-icons": ["󰃞", "󰃟", "󰃠", "󰃝"]
+  },
+
+  "bluetooth": {
+    "format": "",
+    "tooltip-format": "{device_alias}",
+    "tooltip-format-connected": " {device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}",
+    "on-click": "bluetoothctl power on",
+    "on-click-right": "sh ~/.config/waybar/scripts/bluetooth-connect.sh",
+  },
+
   "network": {
     "format-wifi": "  {essid}",
     "format-ethernet": "  Connected",
@@ -56,27 +74,57 @@
     "on-click": "~/.config/waybar/scripts/wifi-menu.sh",
     "interval": 5
   },
+
+  "memory": {
+    "interval": 30,
+    "format": "  {}%",
+    "max-length": 10
+  },
+
   "battery": {
     "format": "{icon} {capacity}%",
-    "format-icons": [
-      " ",
-      " ",
-      " ",
-      " ",
-      " "
-    ],
+    "format-icons": [" ", " ", " ", " ", " "],
     "format-charging": "⚡ {capacity}%"
   },
+
   "tray": {
     "icon-size": 16,
     "spacing": 10
   },
+
+  "mpris": {
+    "format": "{status_icon} {title}",
+    "format-paused": "{status_icon}",
+    "player-icons": {
+      "default": "▶"
+    },
+    "status-icons": {
+      "playing": "⏸",
+      "paused": "▶"
+    },
+    "ignored-players": ["chromium"]
+  },
+
+  // ========================
+  // Custom Modules
+  // ========================
+
+  "custom/nix": {
+    "exec": "echo  ",
+    "return-type": "text",
+    "format": "{}",
+    "tooltip": "Launch Applications",
+    "interval": 0,
+    "on-click": "wofi --show drun"
+  },
+
   "custom/clipboard": {
     "format": "",
     "tooltip": "Clipboard",
     "on-click": "exec cliphist list | wofi --dmenu | cliphist decode | wl-copy",
     "signal": 0
   },
+
   "custom/reboot": {
     "format": " ",
     "tooltip": "Reboot",
@@ -84,6 +132,7 @@
     "on-click-right": "reboot",
     "signal": 0
   },
+
   "custom/poweroff": {
     "format": "⏻",
     "tooltip": "Shutdown",
