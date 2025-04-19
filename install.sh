@@ -28,12 +28,12 @@ echo "✅ Copied!"
 # Copy dotfiles to ~/.config
 echo "🛠️ Copying dotfiles to ~/.config..."
 sudo mkdir -p "$USER_HOME/.config"
-sudo cp -r $DOTFILES_DIR/config/* "$USER_HOME/.config/"
+cp -r $DOTFILES_DIR/config/* "$USER_HOME/.config/"
 echo "✅ Copied!"
 
 # Copy home files to ~
 echo "📦 Copying additional files to home directory..."
-sudo cp -r $DOTFILES_DIR/home/.* "$USER_HOME/"
+cp -r $DOTFILES_DIR/home/.* "$USER_HOME/"
 echo "✅ Copied!"
 
 # Rebuild system with new configuration
