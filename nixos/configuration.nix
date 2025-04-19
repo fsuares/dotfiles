@@ -151,6 +151,7 @@
     swaynotificationcenter  # Notification center compatible with Wayland
     ly  # Lightweight terminal-based display manager
     home-manager  # Manage user-specific configuration declaratively
+    playerctl
 
     # CLI tools
     konsole  # KDE terminal emulator
